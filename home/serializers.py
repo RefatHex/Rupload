@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from models import *
+from .models import *
 
 
 class FileListSerializer(serializers.Serializer):
@@ -16,4 +16,4 @@ class FileListSerializer(serializers.Serializer):
             files_obj = Files.objects.create(folder=folder, file=file)
             files_objs.append(files_obj)
 
-        return Files
+        return {'files': {}, 'folder': str(folder.uid)}
